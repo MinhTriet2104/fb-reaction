@@ -196,7 +196,7 @@
         // clear timeout for not popup continuity
         if (timeoutShowing) clearTimeout(timeoutShowing);
         // wait WAIT_TIME ms
-        setTimeout(() => {
+        timeoutHide = setTimeout(() => {
           // set display none and remove show class to hide
           reactionBoxElement.style.display = "none";
           arrayReactionIcon.forEach((element, index) => {
