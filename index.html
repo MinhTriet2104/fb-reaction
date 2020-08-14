@@ -168,8 +168,10 @@
       likeButtonElement.addEventListener("mouseenter", () => {
         // wait WAIT_TIME ms
         setTimeout(() => {
+          // set display block and add show class to show up
           reactionBoxElement.style.display = "block";
           arrayReactionIcon.forEach((element, index) => {
+            // make a delay by index * SHOW_DELAY ms
             setTimeout(function () {
               element.classList.add("show");
             }, index * SHOW_DELAY);
