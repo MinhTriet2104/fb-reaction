@@ -160,6 +160,10 @@
       const WAIT_TIME = 600;
       const SHOW_DELAY = 70;
 
+      // timeout
+      let timeoutShow;
+      let timeoutHide;
+
       // get Element
       const likeButtonElement = document.getElementById("likeBtn");
       const reactionBoxElement = document.getElementById("reactionBox");
@@ -172,8 +176,10 @@
 
       // show reaction box
       likeButtonElement.addEventListener("mouseenter", () => {
+        // clear timeout for not popup continuity
+        if (timeoutHide) clearTimeout(timeoutHide);
         // wait WAIT_TIME ms
-        setTimeout(() => {
+        timeoutShowing = setTimeout(() => {
           // set display block and add show class to show up
           reactionBoxElement.style.display = "block";
           arrayReactionIcon.forEach((element, index) => {
@@ -187,6 +193,8 @@
 
       // hide reaction box
       likeButtonElement.addEventListener("mouseleave", () => {
+        // clear timeout for not popup continuity
+        if (timeoutShowing) clearTimeout(timeoutShowing);
         // wait WAIT_TIME ms
         setTimeout(() => {
           // set display none and remove show class to hide
