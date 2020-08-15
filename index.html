@@ -159,6 +159,7 @@
       // Constant Variable
       const WAIT_TIME = 600;
       const SHOW_DELAY = 70;
+      let IS_SHOW = false;
 
       // timeout
       let timeoutShow;
@@ -178,6 +179,10 @@
       likeButtonElement.addEventListener("mouseenter", () => {
         // clear timeout for not popup continuity
         if (timeoutHide) clearTimeout(timeoutHide);
+
+        // stop repeat code timeout
+        if (IS_SHOW) return;
+
         // wait WAIT_TIME ms
         timeoutShowing = setTimeout(() => {
           // set display block and add show class to show up
@@ -188,6 +193,8 @@
               element.classList.add("show");
             }, index * SHOW_DELAY);
           });
+
+          IS_SHOW = true; // show
         }, WAIT_TIME);
       });
 
@@ -195,6 +202,10 @@
       likeButtonElement.addEventListener("mouseleave", () => {
         // clear timeout for not popup continuity
         if (timeoutShowing) clearTimeout(timeoutShowing);
+
+        // stop repeat code timeout
+        if (!IS_SHOW) return;
+
         // wait WAIT_TIME ms
         timeoutHide = setTimeout(() => {
           // set display none and remove show class to hide
@@ -202,6 +213,8 @@
           arrayReactionIcon.forEach((element, index) => {
             element.classList.remove("show");
           });
+
+          IS_SHOW = false; // hide
         }, WAIT_TIME);
       });
     </script>
