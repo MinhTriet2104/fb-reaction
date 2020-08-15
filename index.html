@@ -184,7 +184,7 @@
         if (IS_SHOW) return;
 
         // wait WAIT_TIME ms
-        timeoutShowing = setTimeout(() => {
+        timeoutShow = setTimeout(() => {
           // set display block and add show class to show up
           reactionBoxElement.style.display = "block";
           arrayReactionIcon.forEach((element, index) => {
@@ -201,7 +201,7 @@
       // hide reaction box
       likeButtonElement.addEventListener("mouseleave", () => {
         // clear timeout for not popup continuity
-        if (timeoutShowing) clearTimeout(timeoutShowing);
+        if (timeoutShow) clearTimeout(timeoutShow);
 
         // stop repeat code timeout
         if (!IS_SHOW) return;
